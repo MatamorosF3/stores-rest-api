@@ -14,7 +14,7 @@ from security import authenticate, identity
 #jsonify not needed, flask restful do it for us
 #202 return when creating will take long time
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db' #it can be mysql, sqlOracle, postGre
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')#'sqlite:///data.db' #it can be mysql, sqlOracle, postGre
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.secret_key = 'francisco' #importan for jwt
